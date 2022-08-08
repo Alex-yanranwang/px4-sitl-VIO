@@ -109,7 +109,7 @@ void GazeboImuPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
   imu_pub_ = node_handle_->Advertise<sensor_msgs::msgs::Imu>("~/" + model_->GetName() + imu_topic_, 10);
 
   //ros::init(argc, argv, "imu_ros_pub");
-  this->imu_ros_pub = ros_handle.advertise<sensor_msgs::Imu>(imu_topic_,10);
+  this->imu_ros_pub = ros_handle.advertise<sensor_msgs::Imu>(imu_topic_,100);
   // gzmsg<<"113 imu_ros_topic:"<<imu_topic_<<"XXX"<< "\n";
   //imu_pub_ = node_handle_->Advertise<sensor_msgs::msgs::Imu>("~/" + model_->GetName() + imu_topic_, 10);
   //gzmsg<<"110 IMU_Topic:"<<model_->GetName()<<"XXXXX"<< imu_topic_<< "\n";
@@ -357,13 +357,16 @@ void GazeboImuPlugin::OnUpdate(const common::UpdateInfo& _info) {
   imu_ros_msg_.angular_velocity.x = angular_velocity_I[0];
   imu_ros_msg_.angular_velocity.y = angular_velocity_I[1];
   imu_ros_msg_.angular_velocity.z = angular_velocity_I[2];
-  //imu_ros_msg_.angular_velocity = angular_velocity;
-  //imu_ros_msg_.orientation = imu_message_.orientation;
-  // imu_ros_msg_.orientation_covariance = imu_message_.orientation_covariance;
-  // imu_ros_msg_.angular_velocity = imu_message_.angular_velocity;
-  // imu_ros_msg_.angular_velocity_covariance = imu_message_.angular_velocity_covariance;
-  // imu_ros_msg_.linear_acceleration = imu_message_.linear_acceleration;
-  // imu_ros_msg_.linear_acceleration_covariance = imu_message_.linear_acceleration_covariance;
+
+  imu_ros_msg_.orientation_covariance[0] = -1.0;
+  imu_ros_msg_.orientation_covariance[1] = -1.0;
+  imu_ros_msg_.orientation_covariance[2] = -1.0;
+  imu_ros_msg_.orientation_covariance[3] = -1.0;
+  imu_ros_msg_.orientation_covariance[4] = -1.0;
+  imu_ros_msg_.orientation_covariance[5] = -1.0;
+  imu_ros_msg_.orientation_covariance[6] = -1.0;
+  imu_ros_msg_.orientation_covariance[7] = -1.0;
+  imu_ros_msg_.orientation_covariance[8] = -1.0;
 
   imu_ros_pub.publish(imu_ros_msg_);
   //gzmsg<<"328 IMU_Topic:publish"<< "\n";

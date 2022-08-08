@@ -159,5 +159,6 @@ class GazeboImuPlugin : public ModelPlugin {
   ros::NodeHandle ros_handle;
   ros::Publisher imu_ros_pub;
   sensor_msgs::Imu imu_ros_msg_;
+  //double gaussian_noise_;
 };
 }

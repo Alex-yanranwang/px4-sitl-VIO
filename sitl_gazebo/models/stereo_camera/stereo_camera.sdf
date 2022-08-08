@@ -24,7 +24,8 @@
         </geometry>
       </visual>
       <sensor type="multicamera" name="stereo_camera">
-        <update_rate>7.0</update_rate>
+        <!--update_rate>7.0</update_rate-->
+        <update_rate>30.0</update_rate>
         <camera name="left">
           <pose>0.1 0.035 0 0 0 0</pose>
           <horizontal_fov>1.3962634</horizontal_fov>
@@ -34,8 +35,8 @@
             <format>L8</format>
           </image>
           <clip>
-            <near>0.02</near>
-            <far>30.0</far>
+            <near>0.01</near>
+            <far>100.0</far>
           </clip>
           <noise>
             <type>gaussian</type>
