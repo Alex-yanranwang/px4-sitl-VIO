@@ -1,0 +1,8 @@
+<launch>
+
+  <!-- Bridge node -->
+  <node name="vid_px4_bridge" pkg="vid_estimator" type="vid_px4_bridge.py" output="screen" >
+    <!--rosparam param="input_topic" subst_value="True">$(arg input_topic)</rosparam-->
+  </node>
+
+</launch>
