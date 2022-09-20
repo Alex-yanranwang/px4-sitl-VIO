@@ -1,7 +1,6 @@
 # px4-sitl-VIO
-```
 A px4-based simulation platform - combining with plugins needed by Vision-inertial-odometry (VIO)
-```
+
 
 ## L515 - KinoJGM202207_H
 ```
